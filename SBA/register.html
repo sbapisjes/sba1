@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Faiq Ali">
+    <script src="https://kit.fontawesome.com/76248a62b8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="./css/rgstr.css">
+    <title>Register | SBA</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <section class="contact">
+            <div class="contactForm">
+                <form name="submit-to-google-sheet" action="https://formsubmit.co/16b31a1e22d916a2c1488b34958a8183" method="POST">
+                    <h2>Register</h2>
+                    <input type="hidden" name="_next" value="https://bridgeeducationalconsultants.uk/thanks.html"> <!-- The domain must be the same... -->
+                    <input type="hidden" name="_subject" value="Contact Form Query">
+                    <div class="inputBox">
+                        <input id="name" type="text" name="Student Name" required="requires">
+                        <span>Your Name</span>
+                    </div>
+                    <div class="inputBox">
+                        <input id="name" type="text" name="Father Name" required="requires">
+                        <span>Father's Name</span>
+                    </div>
+                    <div class="inputBox">
+                        <input id="email" type="number" name="ID" required="requires">
+                        <span>Student ID</span>
+                    </div>
+                    <div class="inputBox">
+                        <input id="email" type="number" name="Number" required="requires">
+                        <span>Phone Number</span>
+                    </div>
+                    <div class="inputBox">
+                        <input id="message" type="number" name="Bus" required="requires">
+                        <span>Bus number</span>
+                    </div>
+                    <div class="inputBox" id="submitCoU">
+                        <input type="submit" name="" value="Send">
+                    </div>
+                    <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_autoresponse" value="Hi! We hope you are doing well! This is an automated email from SBA to inform you that your details have been recieved.">
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </section>
+
+    <a href="./index.html" class="material-icons floating-btn">Go Back</a>
+
+    <footer>
+        <p>&copy; 2022 | All rights reserved</p>
+    </footer>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbygvy_83vFOKLgVtAxpywrajCxUgebNF0gZLqpwM5QzjybshV679ABPfMmUTGksBQWegQ/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Thank you for registering!"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
